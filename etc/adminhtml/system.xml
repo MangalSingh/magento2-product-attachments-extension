@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="octocub_product_attachments" translate="label" sortOrder="910" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Product Attachments</label>
+            <tab>catalog</tab>
+            <resource>Octocub_ProductAttachments::config</resource>
+
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attachments</label>
+                    <comment>Enable Product Attachments extension</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="tab_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attachments Tab Title</label>
+                    <comment>Enter the title of the attachment tab in the product page.</comment>
+                </field>
+
+                <field id="heading" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attachments Heading</label>
+                    <comment>Add heading for the attachments.</comment>
+                </field>
+
+                <field id="display_file_size" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display File Size</label>
+                    <comment>Set "YES" to display file size in the frontend.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="display_downloads" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Count of Downloads</label>
+                    <comment>Set "YES" to display the number of downloads in the frontend.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

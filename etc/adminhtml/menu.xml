@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Octocub_ProductAttachments::attachments"
+             title="Product Attachments"
+             module="Octocub_ProductAttachments"
+             sortOrder="210"
+             parent="Magento_Catalog::catalog"
+             action="octocub_attachments/attachment/index"
+             resource="Octocub_ProductAttachments::attachments_manage"/>
+        <add id="Octocub_ProductAttachments::config_link"
+             title="Attachments Settings"
+             module="Octocub_ProductAttachments"
+             sortOrder="211"
+             parent="Magento_Catalog::catalog"
+             action="adminhtml/system_config/edit/section/octocub_product_attachments"
+             resource="Octocub_ProductAttachments::config"/>
+    </menu>
+</config>

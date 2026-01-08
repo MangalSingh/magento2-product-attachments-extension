@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<acl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <resources>
+        <resource id="Magento_Backend::admin">
+            <resource id="Octocub_ProductAttachments::attachments_root" title="Product Attachments" sortOrder="10">
+                <resource id="Octocub_ProductAttachments::attachments_manage" title="Manage Attachments" sortOrder="10"/>
+                <resource id="Octocub_ProductAttachments::config" title="Configuration" sortOrder="20"/>
+            </resource>
+        </resource>
+    </resources>
+</acl>

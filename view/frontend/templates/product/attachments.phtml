@@ -1,0 +1,34 @@
+<?php
+/** @var \Octocub\ProductAttachments\Block\Product\Attachments $block */
+if (!$block->canShow()) return;
+
+$items = $block->getAttachments();
+if (!$items) return;
+
+$block->setData('title', $block->getTabTitle());
+?>
+<div class="octocub-product-attachments">
+    <h3><?= $block->escapeHtml($block->getHeading()) ?></h3>
+
+    <ul class="attachments-list">
+        <?php foreach ($items as $att): ?>
+            <?php
+              $size = (int)$att->getData('file_size');
+              $downloads = (int)$att->getData('downloads');
+            ?>
+            <li class="attachment-item">
+                <a href="<?= $block->escapeUrl($block->getDownloadUrl((int)$att->getId())) ?>">
+                    <?= $block->escapeHtml((string)$att->getData('title')) ?>
+                </a>
+
+                <?php if ($block->showFileSize() && $size): ?>
+                    <span class="attachment-meta"> (<?= $block->escapeHtml($block->formatBytes($size)) ?>)</span>
+                <?php endif; ?>
+
+                <?php if ($block->showDownloads()): ?>
+                    <span class="attachment-meta"> — <?= $block->escapeHtml(__('Downloads: %1', $downloads)) ?></span>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

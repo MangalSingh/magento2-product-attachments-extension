@@ -1,0 +1,65 @@
+<?php
+/** @var \Octocub\ProductAttachments\Block\Adminhtml\Attachment\Edit $block */
+$model = $block->getModel();
+$id = (int)$model->getId();
+?>
+<div class="page-main-actions">
+  <div class="page-actions">
+    <div class="page-actions-inner">
+      <div class="page-actions-buttons">
+        <button type="button" class="action-default" onclick="setLocation('<?= $block->escapeUrl($block->getBackUrl()) ?>')">
+          <span><?= $block->escapeHtml(__('Back')) ?></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form method="post" enctype="multipart/form-data" action="<?= $block->escapeUrl($block->getSaveUrl()) ?>">
+  <?= $block->getBlockHtml('formkey') ?>
+  <input type="hidden" name="attachment_id" value="<?= $id ?>"/>
+
+  <fieldset class="admin__fieldset">
+    <legend class="admin__legend"><span><?= $block->escapeHtml($id ? __('Edit Attachment') : __('New Attachment')) ?></span></legend>
+
+    <div class="admin__field">
+      <label class="admin__field-label" for="title"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+      <div class="admin__field-control">
+        <input class="admin__control-text" type="text" name="title" id="title" value="<?= $block->escapeHtml((string)$model->getData('title')) ?>" required>
+      </div>
+    </div>
+
+    <div class="admin__field">
+      <label class="admin__field-label" for="file"><span><?= $block->escapeHtml(__('File')) ?></span></label>
+      <div class="admin__field-control">
+        <input class="admin__control-file" type="file" name="file" id="file" <?= $id ? '' : 'required' ?>>
+        <?php if ($id): ?>
+          <p class="note"><?= $block->escapeHtml(__('Current: %1', (string)$model->getData('file_name'))) ?></p>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    <div class="admin__field">
+      <label class="admin__field-label" for="product_ids"><span><?= $block->escapeHtml(__('Product IDs (comma separated)')) ?></span></label>
+      <div class="admin__field-control">
+        <input class="admin__control-text" type="text" name="product_ids" id="product_ids" value="" placeholder="12,13,14">
+        <p class="note"><?= $block->escapeHtml(__('Example: 12,13,14 (You can find product ID in product grid).')) ?></p>
+      </div>
+    </div>
+
+    <div class="admin__field">
+      <label class="admin__field-label" for="is_active"><span><?= $block->escapeHtml(__('Enabled')) ?></span></label>
+      <div class="admin__field-control">
+        <select class="admin__control-select" name="is_active" id="is_active">
+          <option value="1" <?= ((int)$model->getData('is_active') !== 0) ? 'selected' : '' ?>><?= $block->escapeHtml(__('Yes')) ?></option>
+          <option value="0" <?= ((int)$model->getData('is_active') === 0) ? 'selected' : '' ?>><?= $block->escapeHtml(__('No')) ?></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="admin__actions-switch">
+      <button class="action-primary" type="submit"><span><?= $block->escapeHtml(__('Save')) ?></span></button>
+      <button class="action-default" name="back" value="1" type="submit"><span><?= $block->escapeHtml(__('Save and Continue')) ?></span></button>
+    </div>
+  </fieldset>
+</form>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">octocub_attachment_listing.octocub_attachment_listing_data_source</item>
+            <item name="deps" xsi:type="string">octocub_attachment_listing.octocub_attachment_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">octocub_attachment_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add Attachment</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">octocub_attachments/attachment/new</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="octocub_attachment_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Octocub\ProductAttachments\Ui\DataProvider\Attachment\ListingDataProvider</argument>
+            <argument name="name" xsi:type="string">octocub_attachment_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">attachment_id</argument>
+            <argument name="requestFieldName" xsi:type="string">attachment_id</argument>
+        </argument>
+    </dataSource>
+
+    <columns name="octocub_attachment_columns">
+        <column name="attachment_id">
+            <settings><label translate="true">ID</label><sorting>desc</sorting></settings>
+        </column>
+        <column name="title">
+            <settings><label translate="true">Title</label></settings>
+        </column>
+        <column name="file_name">
+            <settings><label translate="true">File</label></settings>
+        </column>
+        <column name="file_size">
+            <settings><label translate="true">Size (bytes)</label></settings>
+        </column>
+        <column name="downloads">
+            <settings><label translate="true">Downloads</label></settings>
+        </column>
+        <column name="is_active">
+            <settings><label translate="true">Enabled</label></settings>
+        </column>
+
+        <actionsColumn name="actions" class="Magento\Ui\Component\Listing\Columns\Actions">
+            <settings>
+                <indexField>attachment_id</indexField>
+                <label translate="true">Actions</label>
+            </settings>
+            <action name="edit">
+                <settings>
+                    <urlPath>octocub_attachments/attachment/edit</urlPath>
+                    <paramName>attachment_id</paramName>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+            <action name="delete">
+                <settings>
+                    <urlPath>octocub_attachments/attachment/delete</urlPath>
+                    <paramName>attachment_id</paramName>
+                    <label translate="true">Delete</label>
+                    <confirm>
+                        <message translate="true">Delete this attachment?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </actionsColumn>
+    </columns>
+</listing>
