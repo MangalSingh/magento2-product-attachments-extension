@@ -49,9 +49,12 @@ Installation
 
 Run the following commands from your Magento root directory:
 
-bin/magento module:enable Vendor_ProductAttachments
+bin/magento module:enable Octocub_ProductAttachments
+
 bin/magento setup:upgrade
+
 bin/magento cache:flush
+
 bin/magento setup:di:compile
 
 Compatibility
@@ -64,11 +67,11 @@ Compatible with most Magento themes
 
 Works with multi-store setups
 
-SEO Keywords
+**SEO Keywords**
 
 Magento 2 product attachments, Magento file attachments extension, Magento product downloads, Magento PDF attachments, Magento product documentation, Magento B2B attachments, Magento 2 extension, Adobe Commerce product attachments.
 
-About the Developer
+**About the Developer**
 
 Developed by Octocub Software Pvt Ltd
 Expertise in Magento 2 Extensions, Checkout Customization, Performance Optimization, and Marketplace Integrations.
